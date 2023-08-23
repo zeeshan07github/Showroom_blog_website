@@ -1,0 +1,14 @@
+{% extends 'Showroom/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5" style="text-align: center;">
+    <h3>Delete Brand: {{ brandss.name }}</h3>
+    <p>Are you sure you want to delete this brand?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a href="{% url 'Showroom:brand_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

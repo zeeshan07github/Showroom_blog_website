@@ -1,0 +1,37 @@
+{% extends 'Showroom/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5" style="text-align: center;">
+    
+    {% if Showroom %}
+    
+        {% for showroom in Showroom %}
+        <img src="{{ showroom.image.url }}" class="card-img" alt="Profile picture" height="530" >
+        <br>
+        <br>
+        <h3><b>{{ showroom.name }}</b> Details</h3>
+        
+        <br>
+        <hr>
+        <p><strong>Location:</strong> {{ showroom.Location }}</p>
+        <p><strong>Owner:</strong> {{ showroom.Owner }}</p>
+        <p><strong>Contact : </strong> {{ showroom.contact }}</p>
+        <p><strong>Our Staff:</strong></p>
+        <ul>
+            {% for staff_member in showroom.Staff.all %}
+            <img src="{{ staff_member.image.url }}" class=#alt="Profile picture" height="230",width ='150px' >
+            <li>{{ staff_member.name }} - <b> The {{ staff_member.Role }}</b></li>
+            <hr>
+            <br>
+            <br>
+            <br>
+            <br>
+            {% endfor %}
+        </ul>
+        {% endfor %}
+    {% else %}
+        <p>No showrooms found.</p>
+    {% endif %}
+</div>
+{% endblock %}

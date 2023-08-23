@@ -1,0 +1,14 @@
+{% extends 'Showroom/base.html' %}
+{% load static %}
+{% block content %}
+
+
+    <form method="post" enctype="multipart/form-data" style="padding: 0 345px 0 345px; margin: 34px; " >
+        <h1>Add new profile</h1>
+        {{form.as_p}}
+
+        {% csrf_token %}    
+        
+        <input class = "btn btn-success" type="submit" value="Submit">
+
+{% endblock content %}

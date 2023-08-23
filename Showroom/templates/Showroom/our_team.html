@@ -1,0 +1,27 @@
+
+{% extends 'Showroom/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container" style ="text-align: center;">
+    <h3>Our Team</h3>
+    <div class="row">
+        {% for staff in team %}
+        <div class="col-md-3">
+            <div class="card ">
+                <img class="card-img-top" src="{{staff.image.url}}" alt="Profile picture"  height="250">
+                <div class="card-body">
+                    <h5 class="card-title">{{staff.name}}</h5>
+                    <h6 class="card-title">{{staff.name}} is our <b>'{{staff.Role}}'</b></h6>
+                    {% if Showroom %}
+                    <h6 class="card-title">{{staff.name}} works in <b>'{{ Showroom.name }}'</b></h6>
+                    {% endif %}
+                </div>
+            </div>
+            <p></p>
+        </div>
+
+
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

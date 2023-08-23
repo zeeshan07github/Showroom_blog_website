@@ -1,0 +1,25 @@
+{% extends 'Showroom/base.html' %}
+{% load static %}
+{% block content %}
+
+
+    <form method="post" enctype="multipart/form-data" style="padding: 0 345px 0 345px; margin: 34px; " >
+        <h1>Add new Brand</h1>
+        
+        {{form.as_p}}
+
+        {% csrf_token %}  
+        
+       <p>
+        *** If Engine number is already used then use these links ***
+       </p>
+        <a class="related-widget-wrapper-link add-related" id="add_id_Engine_number" data-popup="yes" href="/admin/Showroom/engine/add/?_to_field=Engine_no&amp;_popup=1" title="Add another engine">add new Engine number<img src="/static/admin/img/icon-addlink.svg" alt="Add"></a>
+        
+        <br>
+        <br>
+        <a class="related-widget-wrapper-link add-related" id="add_id_Chasis_number" data-popup="yes" href="/admin/Showroom/car/add/?_to_field=Chasis_no&amp;_popup=1" title="Add another car">Add new Chasis_no<img src="/static/admin/img/icon-addlink.svg" alt="Add"></a>
+        <br>
+        <br>    
+        <input class = "btn btn-success" type="submit" value="Submit">
+
+{% endblock content %}

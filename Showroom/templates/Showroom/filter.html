@@ -1,0 +1,71 @@
+{% extends 'Showroom/base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    body{
+        text-align: center;
+    }
+</style>
+<form method="get">
+    {{ form.as_p }}
+    <button class='btn btn-danger' type="submit">Apply Filters</button>
+</form>
+<hr>
+<br>
+{% for modelss in filtered_models %}
+    <!-- Display model attributes here -->
+    
+
+    <div class="col-md-8 offset-md-2 card-gap ">
+        <div class="card">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    {% if modelss.images %}
+                    <img src="{{ modelss.images.url }}" class="card-img" alt="Profile picture" height="330" >
+                    {% endif %}
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Model name: {{ modelss.name }}</h5>
+                        <p class="card-text"><small class="text-muted">{{ brandss.showrooms.Owner }}</small></p>
+                        
+                        <p class="card-text">
+                            <strong>Brand:</strong> {{ modelss.Brand.name }}<br>
+                            <strong>Car Price:</strong> ${{ modelss.Car_price  }}<br>
+
+                            {% if modelss.Engine_name %}
+                            
+                            <strong>Engine:</strong> {{ modelss.Engine_name }}<br>
+                            <strong>Engine Number:</strong> {{ modelss.Engine_number.Engine_no }}<br>
+                            <strong>Chasis Number:</strong> {{ modelss.Chasis_number }}<br>
+                            
+                            <strong>Showroom:</strong> <a href="{% url 'Showroom:showroomss' %}">Contact info</a><br>
+                            {% comment %} {% endif %} {% endcomment %}
+                            
+
+                            {% endif %}
+                                        
+                            <ul>
+                                <strong>Features:</strong>
+                                {% for feature in modelss.Features.all %}
+                                    <li>{{ feature.name }}</li>
+                                {% endfor %}
+                            </ul>
+                            
+                        </p>
+                        <a href="{% url 'Showroom:brand_list' %}" class="btn btn-primary">Back</a>
+                        <!-- Assuming brand.id is the correct attribute for the brand ID -->
+                        <a href="{% url 'Showroom:brand_delete' profile_id=modelss.id %}" class="btn btn-danger">Delete</a>
+                        
+
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+{% endfor %} 
+
+{% endblock  %}

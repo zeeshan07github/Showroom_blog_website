@@ -1,0 +1,81 @@
+{% load static %}
+{% block content %}
+<!-- header.html -->
+
+<!-- Bootstrap navbar -->
+<nav class="navbar navbar-dark bg-dark " style="min-height: 90px">
+    <div class="container-fluid">
+        <a class="navbar-brand"  href="{% url 'Showroom:brand_list' %}"> Showroom website</a>
+        <a class="navbar-brand " style="margin-right:75% ; " href="{% url 'blog:post_list' %}">Our Blog</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Find your dream Car here</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'Showroom:brand_list' %}">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Brands
+                        </a>
+                        
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            
+                            <li><a class="dropdown-item" href="{% url 'Showroom:brand_list' %}">Honda</a></li>
+                            <li><a class="dropdown-item" href="{% url 'Showroom:brand_list' %}">Toyota</a></li>
+                            <li><a class="dropdown-item" href="{% url 'Showroom:brand_list' %}">Ford</a></li>
+                            <li><a class="dropdown-item" href="{% url 'Showroom:brand_list' %}">Tesla</a></li>
+                            <li>
+                        
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">back</a></li>
+                        </ul>
+                        
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'Showroom:our_team' %}">Our team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'Showroom:contactus' %}">Contact us</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href ="{% url 'accounts:login' %}" >Login</a>
+                    </li>
+
+
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'password_change' %}">Change password</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:Delete_account' %}">Delete account</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:logout' %}">Logout</a>
+                    </li>
+                    {% endif %}
+                    
+                </ul>
+                <form class="d-flex mt-3" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</nav>
+<br>
+<a style="margin-left: 80%;" href="{% url 'Showroom:filter' %}" class="btn btn-primary" >Apply Filters</a>
+    <hr>    
+
+<!-- Add your page content below -->
+
+{% endblock %}
